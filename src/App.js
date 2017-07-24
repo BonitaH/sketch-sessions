@@ -72,7 +72,7 @@ var Expressions = React.createClass({
   render: function () {
     return (
      <div className="Radio container">
-      <h3 className="radioLabel">Expression:</h3> 
+      <h3 className="radioLabel">Expression:</h3>
         <div className="row">
           <div className="col-sm-12">
             <form onSubmit={this.handleFormSubmit}>
@@ -188,6 +188,7 @@ var Session = React.createClass({
 
           </div>
         </div>
+
       </div>
     );
   }
@@ -195,13 +196,13 @@ var Session = React.createClass({
 
 
 
-var NewButton = React.createClass({
+var NavButton = React.createClass({
   render: function() {
     return (
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
-  <img src={'LOGOEXAMPLE.png'} />
+  <img src={'logoplaceholder.png'} />
   <button type="button" className="btn btn-default btn-lg button1">HOME</button>
    <button type="button" className="btn btn-default btn-lg button2">ABOUT</button>
   </div>
@@ -211,7 +212,7 @@ var NewButton = React.createClass({
 }
 })
 
-var Picture= React.createClass({
+var Picture = React.createClass({
   render: function() {
     return (
       <div className="container">
@@ -227,22 +228,44 @@ var Picture= React.createClass({
   }
 })
 
-class App extends React.Component {
-   render() {
+var SaveButton = React.createClass({
+  render: function() {
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12">
+  <button type="button" className="btn btn-default btn-lg button1">SAVE</button>
+  </div>
+  </div>
+  </div>
+  );
+}
+})
+
+var App = React.createClass({
+
+   render: function() {
       return (
         <div className="container">
           <div className="row">
             <div className="col-sm-12">
-            <NewButton />
+            <NavButton />
             <Header/>
             <Content/>
             <Expressions />
             <Session />
+            <button type="button" className="btn btn-default btn-lg button1">SAVE</button>
+
             <Picture />
          </div>
          </div>
          </div>
       );
 }
-}
+})
 export default App;
+{/*  onClick: function (changeEvent) {
+  this.setState({
+    selectedOption: changeEvent.target.value
+  });
+},*/}
