@@ -275,7 +275,13 @@ var ImageOverlay = React.createClass({
   render: function() {
       return (
         <div id="overlay" className="overlay" style={{"position" : "fixed", "width" : "100%", "height" : "100%", "top" : "0px", "left" : "0px","right" : "0px","bottom" : "0px", "background-color" : "rgba(0,0,0,0.4)"}}>
-            <img src="./pic1.jpg" className="img-responsive"/>
+            <img src="./pic1.jpg" className="img-responsive" style={{"height" : "92%"}}/>
+            <div className="btn-group">
+               <button type="button" className="btn btn-default btn-lg button3">Previous</button>
+               <button type="button" className="btn btn-default btn-lg button3">STOP</button>
+               <button type="button" className="btn btn-default btn-lg button3">Next</button>
+            </div>
+
         </div>
       );
     }

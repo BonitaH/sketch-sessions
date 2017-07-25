@@ -83,3 +83,13 @@
   font-variant: normal;
   font-weight: 400;
 }
+
+.button3 {
+  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  word-wrap: break-word;
+  width:130px;
+}
