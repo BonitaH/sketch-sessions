@@ -47,7 +47,7 @@ var Expressions = React.createClass({
   getInitialState: function () {
     return {
       selectedOption: 'option1',
-      text: 'hello'
+      text: 'Option1'
     };
   },
 
@@ -197,13 +197,29 @@ var Session = React.createClass({
 
 
 var NavButton = React.createClass({
+  componentDidMount: function() {
+      window.addEventListener('scroll', this.handleScroll);
+  },
+
+  componentWillUnmount: function() {
+      window.removeEventListener('scroll', this.handleScroll);
+  },
+
+  handleScroll: function(event) {
+      let scrollTop = event.srcElement.body.scrollTop,
+          itemTranslate = Math.min(0, scrollTop/3 - 60);
+
+      this.setState({
+        transform: itemTranslate
+      });
+  },
   render: function() {
     return (
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
   <img src={'logoplaceholder.png'} />
-  <button type="button" className="btn btn-default btn-lg button1">HOME</button>
+  <button type="button" className="btn btn-default btn-lg button1" onclick="topFunction()">HOME</button>
    <button type="button" className="btn btn-default btn-lg button2">ABOUT</button>
   </div>
   </div>
@@ -227,6 +243,43 @@ var Picture = React.createClass({
     )
   }
 })
+
+var ButtonClicked = React.createClass({
+    getInitialState: function() {
+        return { clickButton: false };
+    },
+    onClick: function() {
+        this.setState({ clickButton: true });
+    },
+    render: function() {
+        return (
+            <div>
+            <button type="button" className="btn btn-default btn-lg button1" onClick={this.onClick}>START</button>
+                { this.state.clickButton ? <ImageOverlay /> : null }
+            </div>
+        );
+    }
+});
+
+var ImageFrame = React.createClass({
+    render: function() {
+        return (
+            <div id="image-frame" className="show-images">
+                  <img src="./pic1.jpg" className="img-responsive" alt="Responsive image" />
+            </div>
+        );
+    }
+});
+
+var ImageOverlay = React.createClass({
+  render: function() {
+      return (
+        <div id="overlay" className="overlay" style={{"position" : "fixed", "width" : "100%", "height" : "100%", "top" : "0px", "left" : "0px","right" : "0px","bottom" : "0px", "background-color" : "rgba(0,0,0,0.4)"}}>
+            <img src="./pic1.jpg" className="img-responsive"/>
+        </div>
+      );
+    }
+  });
 
 var SaveButton = React.createClass({
   render: function() {
@@ -254,9 +307,8 @@ var App = React.createClass({
             <Content/>
             <Expressions />
             <Session />
-            <button type="button" className="btn btn-default btn-lg button1">SAVE</button>
+            <ButtonClicked />
 
-            <Picture />
          </div>
          </div>
          </div>
@@ -264,8 +316,3 @@ var App = React.createClass({
 }
 })
 export default App;
-{/*  onClick: function (changeEvent) {
-  this.setState({
-    selectedOption: changeEvent.target.value
-  });
-},*/}
