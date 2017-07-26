@@ -2,8 +2,6 @@ import React from 'react';
 import './App.css';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import { Button } from 'react-bootstrap';
-
 
 class Logo extends React.Component {
    render() {
@@ -197,29 +195,13 @@ var Session = React.createClass({
 
 
 var NavButton = React.createClass({
-  componentDidMount: function() {
-      window.addEventListener('scroll', this.handleScroll);
-  },
-
-  componentWillUnmount: function() {
-      window.removeEventListener('scroll', this.handleScroll);
-  },
-
-  handleScroll: function(event) {
-      let scrollTop = event.srcElement.body.scrollTop,
-          itemTranslate = Math.min(0, scrollTop/3 - 60);
-
-      this.setState({
-        transform: itemTranslate
-      });
-  },
   render: function() {
     return (
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
   <img src={'logoplaceholder.png'} />
-  <button type="button" className="btn btn-default btn-lg button1" onclick="topFunction()">HOME</button>
+  <button type="button" className="btn btn-default btn-lg button1">HOME</button>
    <button type="button" className="btn btn-default btn-lg button2">ABOUT</button>
   </div>
   </div>
@@ -251,11 +233,16 @@ var ButtonClicked = React.createClass({
     onClick: function() {
         this.setState({ clickButton: true });
     },
+
+    onClose: function() {
+      this.setState({ clickButton: false });
+    },
+
     render: function() {
         return (
             <div>
             <button type="button" className="btn btn-default btn-lg button1" onClick={this.onClick}>START</button>
-                { this.state.clickButton ? <ImageOverlay /> : null }
+                { this.state.clickButton ? <ImageOverlay close={this.onClose}/> : null }
             </div>
         );
     }
@@ -272,20 +259,52 @@ var ImageFrame = React.createClass({
 });
 
 var ImageOverlay = React.createClass({
-  render: function() {
-      return (
-        <div id="overlay" className="overlay" style={{"position" : "fixed", "width" : "100%", "height" : "100%", "top" : "0px", "left" : "0px","right" : "0px","bottom" : "0px", "background-color" : "rgba(0,0,0,0.4)"}}>
-            <img src="./pic1.jpg" className="img-responsive" style={{"height" : "92%"}}/>
-            <div className="btn-group">
-               <button type="button" className="btn btn-default btn-lg button3">Previous</button>
-               <button type="button" className="btn btn-default btn-lg button3">STOP</button>
-               <button type="button" className="btn btn-default btn-lg button3">Next</button>
-            </div>
+  getInitialState: function () {
+  return {
+    counter: 0,
+    imageSources: ["./pic1.jpg","./pic2.jpeg","./pic3.jpg","./pic4.jpg"],
+    imageIndex: 0
+  };
+},
 
+timerTick: function() {
+  this.setState({
+    counter: this.state.counter + 1
+  });
+},
+
+componentDidMount: function() {
+  setInterval(this.timerTick, 1000);
+},
+previous: function() {
+  this.setState({imageIndex: this.state.imageIndex -1});
+},
+
+next: function() {
+  this.setState({imageIndex: this.state.imageIndex +1});
+},
+
+  render: function() {
+    console.log(this.state.counter)
+      return (
+        <div id="overlay" className="overlay" style={{"position" : "fixed", "width" : "100%", "height" : "100%", "top" : "0px", "left" : "0px","right" : "0px","bottom" : "0px", "backgroundColor" : "rgba(0,0,0,0.4)"}}>
+
+          <img src={this.state.imageSources[this.state.imageIndex]} className="img-responsive" style={{"height" : "92%"}}/>
+            <div className="btn-group">
+               <button type="button" className="btn btn-default btn-lg button3" onClick={this.previous}>Previous</button>
+               <button type="button" className="btn btn-default btn-lg button3" onClick={this.props.close}>STOP</button>
+               <button type="button" className="btn btn-default btn-lg button3" onClick={this.next}>Next</button>
+            </div>
         </div>
       );
     }
   });
+
+
+  {/*  if (imageIndex <0) ({imageIndex: this.getInitialState}),
+  else {
+    console.log(imageIndex); */}
+  
 
 var SaveButton = React.createClass({
   render: function() {
