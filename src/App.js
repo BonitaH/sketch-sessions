@@ -44,28 +44,24 @@ var Expressions = React.createClass({
 
   getInitialState: function () {
     return {
-      selectedOption: 'option1',
+      selectedExpression: 'option1',
       text: 'Option1'
     };
   },
 
   handleOptionChange: function (changeEvent) {
     this.setState({
-      selectedOption: changeEvent.target.value
+      selectedExpression: changeEvent.target.value
     });
   },
 
   handleFormSubmit: function (formSubmitEvent) {
     formSubmitEvent.preventDefault();
 
-    console.log('You have selected:', this.state.selectedOption);
+    console.log('You have selected:', this.state.selectedExpression);
   },
 
-  handleTextChange: function(changeEvent) {
-    this.setState({
-      text: changeEvent.target.value
-    })
-  },
+
 
   render: function () {
     return (
@@ -76,43 +72,42 @@ var Expressions = React.createClass({
             <form onSubmit={this.handleFormSubmit}>
               <div className="radio">
                 <label className="biglabel">
-                  <input type="radio" value="option1" checked={this.state.selectedOption === 'option1'} onChange={this.handleOptionChange} />
+                  <input type="radio" value="option1" checked={this.state.selectedExpression === 'option1'} onChange={this.handleOptionChange} />
                   All
                 </label>
               </div>
               <div className="radio">
                 <label>
-                  <input type="radio" value="option2" checked={this.state.selectedOption === 'option2'} onChange={this.handleOptionChange}/>
+                  <input type="radio" value="option2" checked={this.state.selectedExpression === 'option2'} onChange={this.handleOptionChange}/>
                   Neutral
                 </label>
               </div>
               <div className="radio">
                 <label>
-                  <input type="radio" value="option3" checked={this.state.selectedOption === 'option3'} onChange={this.handleOptionChange}/>
+                  <input type="radio" value="option3" checked={this.state.selectedExpression === 'option3'} onChange={this.handleOptionChange}/>
                   Happy
                 </label>
               </div>
               <div className="radio">
                 <label>
-                  <input type="radio" value="option4" checked={this.state.selectedOption === 'option4'} onChange={this.handleOptionChange}/>
+                  <input type="radio" value="option4" checked={this.state.selectedExpression === 'option4'} onChange={this.handleOptionChange}/>
                 Sad
                 </label>
               </div>
               <div className="radio">
                   <label>
-                    <input type="radio" value="option5" checked={this.state.selectedOption === 'option5'} onChange={this.handleOptionChange}/>
+                    <input type="radio" value="option5" checked={this.state.selectedExpression === 'option5'} onChange={this.handleOptionChange}/>
                     Angry
                   </label>
                 </div>
                 <div className="radio">
                   <label>
-                    <input type="radio" value="option6" checked={this.state.selectedOption === 'option6'} onChange={this.handleOptionChange}/>
+                    <input type="radio" value="option6" checked={this.state.selectedExpression === 'option6'} onChange={this.handleOptionChange}/>
                     Surprised
                   </label>
                 </div>
-              <button className="btn btn-default" type="submit">Save</button>
+                <button className="btn btn-default" type="submit">Save</button>
               </form>
-
             </div>
           </div>
         </div>
@@ -120,32 +115,26 @@ var Expressions = React.createClass({
   }
 });
 
-var Session = React.createClass({
+var Gender = React.createClass({
 
   getInitialState: function () {
     return {
-      selectedOption: 'option1',
-      text: 'hello'
+      selectedGender: 'option1',
     };
   },
 
   handleOptionChange: function (changeEvent) {
     this.setState({
-      selectedOption: changeEvent.target.value
+      selectedGender: changeEvent.target.value
     });
   },
 
   handleFormSubmit: function (formSubmitEvent) {
     formSubmitEvent.preventDefault();
 
-    console.log('You have selected:', this.state.selectedOption);
+    console.log('You have selected:', this.state.selectedGender);
   },
 
-  handleTextChange: function(changeEvent) {
-    this.setState({
-      text: changeEvent.target.value
-    })
-  },
 
   render: function () {
     return (
@@ -165,28 +154,26 @@ var Session = React.createClass({
             <form onSubmit={this.handleFormSubmit}>
               <div className="radio">
                 <label className="biglabel">
-                  <input type="radio" value="option1" checked={this.state.selectedOption === 'option1'} onChange={this.handleOptionChange} />
+                  <input type="radio" value="option1" checked={this.state.selectedGender === 'option1'} onChange={this.handleOptionChange} />
                   Both
                 </label>
               </div>
               <div className="radio">
                 <label>
-                  <input type="radio" value="option2" checked={this.state.selectedOption === 'option2'} onChange={this.handleOptionChange}/>
+                  <input type="radio" value="option2" checked={this.state.selectedGender === 'option2'} onChange={this.handleOptionChange}/>
                   Female
                 </label>
               </div>
               <div className="radio">
                 <label>
-                  <input type="radio" value="option3" checked={this.state.selectedOption === 'option3'} onChange={this.handleOptionChange}/>
+                  <input type="radio" value="option3" checked={this.state.selectedGender === 'option3'} onChange={this.handleOptionChange}/>
                   Male
                 </label>
               </div>
               <button className="btn btn-default" type="submit">Save</button>
             </form>
-
           </div>
         </div>
-
       </div>
     );
   }
@@ -206,24 +193,8 @@ var NavButton = React.createClass({
   </div>
   </div>
   </div>
-  );
+);
 }
-})
-
-var Picture = React.createClass({
-  render: function() {
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-12">
-
-         <br />
-      <img src="./pic1.jpg" className="img-responsive" alt="Responsive image" />
-      </div>
-      </div>
-      </div>
-    )
-  }
 })
 
 var ButtonClicked = React.createClass({
@@ -248,24 +219,120 @@ var ButtonClicked = React.createClass({
     }
 });
 
-var ImageFrame = React.createClass({
-    render: function() {
-        return (
-            <div id="image-frame" className="show-images">
-                  <img src="./pic1.jpg" className="img-responsive" alt="Responsive image" />
-            </div>
-        );
-    }
-});
 
 var ImageOverlay = React.createClass({
-  getInitialState: function () {
+
+getInitialState: function () {
   return {
     counter: 0,
-    imageSources: ["./pic1.jpg","./pic2.jpeg","./pic3.jpg","./pic4.jpg"],
+    imageSourcesAll: [
+      {
+        number: 0,
+        gender: "female",
+        expression: "neutral",
+        location: "./pic1.jpg"
+      },
+      {
+        number: 1,
+        gender: "female",
+        expression: "happy",
+        location: "./pic2.jpg"
+      },
+      {
+        number: 2,
+        gender: "female",
+        expression: "sad",
+        location: "./pic3.jpg"
+      },
+      {
+        number: 3,
+        gender: "female",
+        expression: "angry",
+        location: "./pic4.jpg"
+      },
+      {
+        number: 4,
+        gender: "female",
+        expression: "surprised",
+        location: "./pic5.jpg"
+      },
+      {
+        number: 5,
+        gender: "male",
+        expression: "neutral",
+        location: "./picm1.jpg"
+      },
+      {
+        number: 6,
+        gender: "male",
+        expression: "happy",
+        location: "./picm2.jpg"
+      },
+      {
+        number: 7,
+        gender: "female",
+        expression: "sad",
+        location: "./picm3.jpg"
+      },
+      {
+        number: 8,
+        gender: "female",
+        expression: "angry",
+        location: "./picm4.jpg"
+      },
+      {
+        number: 9,
+        gender: "female",
+        expression: "surprised",
+        location: "./picm5.jpg"
+      }],
     imageIndex: 0
   };
 },
+
+// selectionFilter: function() {
+// var selection = []
+// return (this.props.selectedExpression === imageSourcesAll.expression && this.props.selectedGender === imageSourcesAll.gender)
+// selection: this.imageSourcesAll.filter(selectionFilter[this.props.selectedExpression,this.props.selectedGender])
+// },
+
+// selection : function() {this.imageSourcesAll.filter(function(this.props.selectedExpression, this.props.selectedGender){
+// return (this.props.selectedExpression === imageSourcesAll.expression && this.props.selectedGender === imageSourcesAll.gender)
+// });
+// },
+
+selection: function() {
+  var results = [];
+  for(var i = 0; i < this.imageSourcesAll.length;  i++){
+    if(this.props.selectedExpression == this.imageSourcesAll[i].expression && this.props.selectedGender == this.imageSourcesAll[i].gender){
+      results.push(this.imageSourcesAll[i].location)
+      console.log(results)
+      return(results)
+    }
+  }
+},
+
+
+
+// selectionFilter: function(imageSourcesAll,  ){
+//     var selection = [i];
+//     for(var i = 0; i < imageSourcesAll.length;  i++) {
+//         if(this.props.selectedExpression == imageSourcesAll.expression && this.props.selectedGender == this.imageSourcesAll.gender)
+//          {
+//             selection.push(<imageSourcesAll />);
+//         }
+//     }
+//   },
+//
+// selectionTwo: function(){
+//   for(i=0; i< imageSources.length; i++){
+//     if(gender === "female" && expression === "happy"){
+//       selection.push(imageSources[i].location)
+//     }
+//   }
+//   this.setState(this.state.selection)
+// },
+
 
 timerTick: function() {
   this.setState({
@@ -284,12 +351,15 @@ next: function() {
   this.setState({imageIndex: this.state.imageIndex +1});
 },
 
+
+
   render: function() {
     console.log(this.state.counter)
       return (
+
         <div id="overlay" className="overlay" style={{"position" : "fixed", "width" : "100%", "height" : "100%", "top" : "0px", "left" : "0px","right" : "0px","bottom" : "0px", "backgroundColor" : "rgba(0,0,0,0.4)"}}>
 
-          <img src={this.state.imageSources[this.state.imageIndex]} className="img-responsive" style={{"height" : "92%"}}/>
+          <img src={this.results[this.state.imageIndex]} className="img-responsive" style={{"height" : "92%", "width" : "387px"}}/>
             <div className="btn-group">
                <button type="button" className="btn btn-default btn-lg button3" onClick={this.previous}>Previous</button>
                <button type="button" className="btn btn-default btn-lg button3" onClick={this.props.close}>STOP</button>
@@ -303,22 +373,10 @@ next: function() {
 
   {/*  if (imageIndex <0) ({imageIndex: this.getInitialState}),
   else {
-    console.log(imageIndex); */}
-  
+    console.log(imageIndex);
 
-var SaveButton = React.createClass({
-  render: function() {
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-12">
-  <button type="button" className="btn btn-default btn-lg button1">SAVE</button>
-  </div>
-  </div>
-  </div>
-  );
-}
-})
+  if (counter === 30) {counter: this.getInitialState} */}
+
 
 var App = React.createClass({
 
@@ -331,9 +389,8 @@ var App = React.createClass({
             <Header/>
             <Content/>
             <Expressions />
-            <Session />
+            <Gender />
             <ButtonClicked />
-
          </div>
          </div>
          </div>
