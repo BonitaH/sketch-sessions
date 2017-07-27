@@ -7,7 +7,7 @@ class Logo extends React.Component {
    render() {
       return (
         <div>
-           <img src={'LOGOEXAMPLE.png'} />
+           <img className = "App-logo" src={'LOGOEXAMPLE.png'} />
          </div>
       );
    }
@@ -303,9 +303,9 @@ getInitialState: function () {
 
 selection: function() {
   var results = [];
-  for(var i = 0; i < this.imageSourcesAll.length;  i++){
-    if(this.props.selectedExpression == this.imageSourcesAll[i].expression && this.props.selectedGender == this.imageSourcesAll[i].gender){
-      results.push(this.imageSourcesAll[i].location)
+  for(var i = 0; i < this.state.imageSourcesAll.length;  i++){
+    if(this.props.selectedExpression === this.state.imageSourcesAll[i].expression && this.props.selectedGender === this.state.imageSourcesAll[i].gender){
+      results.push(this.state.imageSourcesAll[i].location)
       console.log(results)
       return(results)
     }
@@ -341,6 +341,7 @@ timerTick: function() {
 },
 
 componentDidMount: function() {
+  this.selection();
   setInterval(this.timerTick, 1000);
 },
 previous: function() {
@@ -359,7 +360,7 @@ next: function() {
 
         <div id="overlay" className="overlay" style={{"position" : "fixed", "width" : "100%", "height" : "100%", "top" : "0px", "left" : "0px","right" : "0px","bottom" : "0px", "backgroundColor" : "rgba(0,0,0,0.4)"}}>
 
-          <img src={this.results[this.state.imageIndex]} className="img-responsive" style={{"height" : "92%", "width" : "387px"}}/>
+          {/*<img src={this.results[this.state.imageIndex]} className="img-responsive" style={{"height" : "92%", "width" : "387px"}}/> */}
             <div className="btn-group">
                <button type="button" className="btn btn-default btn-lg button3" onClick={this.previous}>Previous</button>
                <button type="button" className="btn btn-default btn-lg button3" onClick={this.props.close}>STOP</button>
