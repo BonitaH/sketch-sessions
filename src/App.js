@@ -39,70 +39,66 @@ class Content extends React.Component {
       );
    }
 }
+class Expressions extends React.Component{
+constructor(props){
+  super(props);
+  this.state = {
+    selectedExpression: 'option1',
+    text: 'Option1'
+  }
+}
+handleOptionChange(changeEvent) {
+  this.setState({
+    selectedExpression: changeEvent.target.value
+  });
+}
 
-var Expressions = React.createClass({
+handleFormSubmit(formSubmitEvent) {
+  formSubmitEvent.preventDefault();
 
-  getInitialState: function () {
-    return {
-      selectedExpression: 'option1',
-      text: 'Option1'
-    };
-  },
+  console.log('You have selected:', this.state.selectedExpression);
+}
 
-  handleOptionChange: function (changeEvent) {
-    this.setState({
-      selectedExpression: changeEvent.target.value
-    });
-  },
-
-  handleFormSubmit: function (formSubmitEvent) {
-    formSubmitEvent.preventDefault();
-
-    console.log('You have selected:', this.state.selectedExpression);
-  },
-
-
-
-  render: function () {
+  render() {
     return (
      <div className="Radio container">
       <h3 className="radioLabel">Expression:</h3>
         <div className="row">
           <div className="col-sm-12">
-            <form onSubmit={this.handleFormSubmit}>
+            <form onSubmit={this.handleFormSubmit.bind(this)}>
               <div className="radio">
                 <label className="biglabel">
-                  <input type="radio" value="option1" checked={this.state.selectedExpression === 'option1'} onChange={this.handleOptionChange} />
+                  <input type="radio" value="option1" checked={this.state.selectedExpression === 'option1'} onChange={this.handleOptionChange.bind(this)} />
                   All
                 </label>
               </div>
               <div className="radio">
                 <label>
-                  <input type="radio" value="option2" checked={this.state.selectedExpression === 'option2'} onChange={this.handleOptionChange}/>
+                  <input type="radio" value="option2" checked={this.state.selectedExpression === 'option2'} onChange={this.handleOptionChange.bind(this)}/>
                   Neutral
                 </label>
               </div>
               <div className="radio">
                 <label>
-                  <input type="radio" value="option3" checked={this.state.selectedExpression === 'option3'} onChange={this.handleOptionChange}/>
+                  <input type="radio" value="option3" checked={this.state.selectedExpression === 'option3'} onChange={this.handleOptionChange.bind(this)}/>
                   Happy
                 </label>
               </div>
               <div className="radio">
                 <label>
-                  <input type="radio" value="option4" checked={this.state.selectedExpression === 'option4'} onChange={this.handleOptionChange}/>
+                  <input type="radio" value="option4" checked={this.state.selectedExpression === 'option4'} onChange={this.handleOptionChange.bind(this)}/>
                 Sad
                 </label>
               </div>
               <div className="radio">
                   <label>
-                    <input type="radio" value="option5" checked={this.state.selectedExpression === 'option5'} onChange={this.handleOptionChange}/>
+                    <input type="radio" value="option5" checked={this.state.selectedExpression === 'option5'} onChange={this.handleOptionChange.bind(this)}/>
                     Angry
                   </label>
                 </div>
                 <div className="radio">
                   <label>
-                    <input type="radio" value="option6" checked={this.state.selectedExpression === 'option6'} onChange={this.handleOptionChange}/>
+                    <input type="radio" value="option6" checked={this.state.selectedExpression === 'option6'} onChange={this.handleOptionChange.bind(this)}/>
                     Surprised
                   </label>
                 </div>
@@ -113,60 +109,48 @@ var Expressions = React.createClass({
         </div>
     );
   }
-});
+}
 
-var Gender = React.createClass({
+class Gender extends React.Component {
+  constructor(props) {
+    super(props) ;
 
-  getInitialState: function () {
-    return {
-      selectedGender: 'option1',
+    this.state = {
+      selectedGender: 'option1'
     };
-  },
-
-  handleOptionChange: function (changeEvent) {
+  }
+  handleOptionChange(changeEvent) {
     this.setState({
       selectedGender: changeEvent.target.value
     });
-  },
-
-  handleFormSubmit: function (formSubmitEvent) {
+  }
+  handleFormSubmit(formSubmitEvent) {
     formSubmitEvent.preventDefault();
 
     console.log('You have selected:', this.state.selectedGender);
-  },
-
-
-  render: function () {
+  }
+  render() {
     return (
       <div className="Radio container">
         <div className="row">
           <div className="col-sm-12">
-
-
-
-      {  /*  {this.state.text}
-
-
-          <input type="text" value={this.state.text} onChange={this.handleTextChange} /> */}
-
-
         <h3 className="radioLabel">Female or male:</h3>
-            <form onSubmit={this.handleFormSubmit}>
+            <form onSubmit={this.handleFormSubmit.bind(this)}>
               <div className="radio">
                 <label className="biglabel">
-                  <input type="radio" value="option1" checked={this.state.selectedGender === 'option1'} onChange={this.handleOptionChange} />
+                  <input type="radio" value="option1" checked={this.state.selectedGender === 'option1'} onChange={this.handleOptionChange.bind(this)} />
                   Both
                 </label>
               </div>
               <div className="radio">
                 <label>
-                  <input type="radio" value="option2" checked={this.state.selectedGender === 'option2'} onChange={this.handleOptionChange}/>
+                  <input type="radio" value="option2" checked={this.state.selectedGender === 'option2'} onChange={this.handleOptionChange.bind(this)}/>
                   Female
                 </label>
               </div>
               <div className="radio">
                 <label>
-                  <input type="radio" value="option3" checked={this.state.selectedGender === 'option3'} onChange={this.handleOptionChange}/>
+                  <input type="radio" value="option3" checked={this.state.selectedGender === 'option3'} onChange={this.handleOptionChange.bind(this)}/>
                   Male
                 </label>
               </div>
@@ -177,225 +161,279 @@ var Gender = React.createClass({
       </div>
     );
   }
-});
+}
 
-
-
-var NavButton = React.createClass({
-  render: function() {
+class NavButton extends React.Component {
+  render() {
     return (
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
-  <img src={'logoplaceholder.png'} />
-  <button type="button" className="btn btn-default btn-lg button1">HOME</button>
-   <button type="button" className="btn btn-default btn-lg button2">ABOUT</button>
-  </div>
-  </div>
-  </div>
-);
+            <img src={'logoplaceholder.png'} />
+            <button type="button" className="btn btn-default btn-lg button1">HOME</button>
+            <button type="button" className="btn btn-default btn-lg button2">ABOUT</button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
-})
 
-var ButtonClicked = React.createClass({
-    getInitialState: function() {
-        return { clickButton: false };
-    },
-    onClick: function() {
-        this.setState({ clickButton: true });
-    },
+class ButtonClicked extends React.Component {
+  constructor(props){
+    super(props);
 
-    onClose: function() {
-      this.setState({ clickButton: false });
-    },
-
-    render: function() {
-        return (
-            <div>
-            <button type="button" className="btn btn-default btn-lg button1" onClick={this.onClick}>START</button>
-                { this.state.clickButton ? <ImageOverlay close={this.onClose}/> : null }
-            </div>
-        );
-    }
-});
-
-
-var ImageOverlay = React.createClass({
-
-getInitialState: function () {
-  return {
-    counter: 0,
-    imageSourcesAll: [
-      {
-        number: 0,
-        gender: "female",
-        expression: "neutral",
-        location: "./pic1.jpg"
-      },
-      {
-        number: 1,
-        gender: "female",
-        expression: "happy",
-        location: "./pic2.jpg"
-      },
-      {
-        number: 2,
-        gender: "female",
-        expression: "sad",
-        location: "./pic3.jpg"
-      },
-      {
-        number: 3,
-        gender: "female",
-        expression: "angry",
-        location: "./pic4.jpg"
-      },
-      {
-        number: 4,
-        gender: "female",
-        expression: "surprised",
-        location: "./pic5.jpg"
-      },
-      {
-        number: 5,
-        gender: "male",
-        expression: "neutral",
-        location: "./picm1.jpg"
-      },
-      {
-        number: 6,
-        gender: "male",
-        expression: "happy",
-        location: "./picm2.jpg"
-      },
-      {
-        number: 7,
-        gender: "female",
-        expression: "sad",
-        location: "./picm3.jpg"
-      },
-      {
-        number: 8,
-        gender: "female",
-        expression: "angry",
-        location: "./picm4.jpg"
-      },
-      {
-        number: 9,
-        gender: "female",
-        expression: "surprised",
-        location: "./picm5.jpg"
-      }],
-    imageIndex: 0
-  };
-},
-
-// selectionFilter: function() {
-// var selection = []
-// return (this.props.selectedExpression === imageSourcesAll.expression && this.props.selectedGender === imageSourcesAll.gender)
-// selection: this.imageSourcesAll.filter(selectionFilter[this.props.selectedExpression,this.props.selectedGender])
-// },
-
-// selection : function() {this.imageSourcesAll.filter(function(this.props.selectedExpression, this.props.selectedGender){
-// return (this.props.selectedExpression === imageSourcesAll.expression && this.props.selectedGender === imageSourcesAll.gender)
-// });
-// },
-
-selection: function() {
-  var results = [];
-  for(var i = 0; i < this.state.imageSourcesAll.length;  i++){
-    if(this.props.selectedExpression === this.state.imageSourcesAll[i].expression && this.props.selectedGender === this.state.imageSourcesAll[i].gender){
-      results.push(this.state.imageSourcesAll[i].location)
-      console.log(results)
-      return(results)
+    this.state = {
+      clickButton : false
     }
   }
-},
 
+  onClick() {
+      this.setState({ clickButton: true });
+  }
 
+  onClose() {
+      this.setState({ clickButton: false });
+  }
 
-// selectionFilter: function(imageSourcesAll,  ){
-//     var selection = [i];
-//     for(var i = 0; i < imageSourcesAll.length;  i++) {
-//         if(this.props.selectedExpression == imageSourcesAll.expression && this.props.selectedGender == this.imageSourcesAll.gender)
-//          {
-//             selection.push(<imageSourcesAll />);
-//         }
-//     }
-//   },
-//
-// selectionTwo: function(){
-//   for(i=0; i< imageSources.length; i++){
-//     if(gender === "female" && expression === "happy"){
-//       selection.push(imageSources[i].location)
-//     }
-//   }
-//   this.setState(this.state.selection)
-// },
-
-
-timerTick: function() {
-  this.setState({
-    counter: this.state.counter + 1
-  });
-},
-
-componentDidMount: function() {
-  this.selection();
-  setInterval(this.timerTick, 1000);
-},
-previous: function() {
-  this.setState({imageIndex: this.state.imageIndex -1});
-},
-
-next: function() {
-  this.setState({imageIndex: this.state.imageIndex +1});
-},
-
-
-
-  render: function() {
-    console.log(this.state.counter)
+  render() {
       return (
-
-        <div id="overlay" className="overlay" style={{"position" : "fixed", "width" : "100%", "height" : "100%", "top" : "0px", "left" : "0px","right" : "0px","bottom" : "0px", "backgroundColor" : "rgba(0,0,0,0.4)"}}>
-
-          {/*<img src={this.results[this.state.imageIndex]} className="img-responsive" style={{"height" : "92%", "width" : "387px"}}/> */}
-            <div className="btn-group">
-               <button type="button" className="btn btn-default btn-lg button3" onClick={this.previous}>Previous</button>
-               <button type="button" className="btn btn-default btn-lg button3" onClick={this.props.close}>STOP</button>
-               <button type="button" className="btn btn-default btn-lg button3" onClick={this.next}>Next</button>
-            </div>
-        </div>
+          <div>
+            <button type="button" className="btn btn-default btn-lg button1" onClick={this.onClick.bind(this)}>START</button>
+            { this.state.clickButton ? <ImageOverlay close={this.onClose.bind(this)} gender="female" expression="sad"/> : null }
+          </div>
       );
+  }
+}
+
+class ImageOverlay extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.count = 0;
+    this.counter = null;
+    this.switchEvery = 30;
+
+    this.state = {
+      imageSourcesAll: [
+        {
+          number: 0,
+          gender: "female",
+          expression: "neutral",
+          location: "./pic1.jpg"
+        },
+        {
+          number: 1,
+          gender: "female",
+          expression: "x",
+          location: "./pic2.jpeg"
+        },
+        {
+          number: 2,
+          gender: "female",
+          expression: "neutral",
+          location: "./pic3.jpg"
+        },
+        {
+          number: 3,
+          gender: "female",
+          expression: "neutral",
+          location: "./pic4.jpg"
+        },
+        {
+          number: 4,
+          gender: "female",
+          expression: "neutral",
+          location: "./pic5.jpg"
+        },
+        {
+          number: 5,
+          gender: "male",
+          expression: "neutral",
+          location: "./picm1.jpg"
+        },
+        {
+          number: 6,
+          gender: "male",
+          expression: "happy",
+          location: "./picm2.jpg"
+        },
+        {
+          number: 7,
+          gender: "male",
+          expression: "sad",
+          location: "./picm3.jpg"
+        },
+        {
+          number: 8,
+          gender: "male",
+          expression: "angry",
+          location: "./picm4.jpg"
+        },
+        {
+          number: 9,
+          gender: "male",
+          expression: "surprised",
+          location: "./picm5.jpg"
+        },
+        {
+          number: 10,
+          gender: "female",
+          expression: "neutral",
+          location: "./pic6.jpeg"
+        },
+        {
+          number: 2,
+          gender: "female",
+          expression: "neutral",
+          location: "./pic7.jpg"
+        },
+        {
+          number: 3,
+          gender: "female",
+          expression: "happy",
+          location: "./pic8.jpg"
+        },
+        {
+          number: 4,
+          gender: "female",
+          expression: "sad",
+          location: "./pic9.jpg"
+        },
+        {
+          number: 5,
+          gender: "female",
+          expression: "angry",
+          location: "./pic10.jpg"
+        },
+        {
+          number: 6,
+          gender: "male",
+          expression: "happy",
+          location: "./picm6.jpg"
+        },
+        {
+          number: 7,
+          gender: "male",
+          expression: "sad",
+          location: "./picm7.jpg"
+        },
+        {
+          number: 8,
+          gender: "male",
+          expression: "angry",
+          location: "./picm8.jpg"
+        },
+        {
+          number: 1,
+          gender: "male",
+          expression: "happy",
+          location: "./picm9.jpeg"
+        },
+        {
+          number: 2,
+          gender: "male",
+          expression: "sad",
+          location: "./picm10.jpg"
+        },
+        {
+          number: 3,
+          gender: "male",
+          expression: "angry",
+          location: "./picm11.jpg"
+        }],
+      imageIndex: 0
+    };
+  }
+
+  selection() {
+    var results = this.state.imageSourcesAll.filter(function(image){
+      return selectedExpression === image.expression && selectedGender === image.gender
+    });
+    results = results.map(function(image) {
+      return image.location;
+    });
+    return results;
+  }
+
+  componentWillMount() {
+    // console.log(this.props);
+    this.setState({
+      selection: this.selection()
+    });
+  }
+
+  componentDidMount() {
+    this.counter = setInterval(this.timerTick.bind(this), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.counter);
+  }
+
+  changeSwitch(event) {
+    this.switchEvery = parseInt(event.target.value);
+  }
+
+  timerTick() {
+    this.count = this.count +1;
+    if(this.count % this.switchEvery === 0){
+      this.next();
     }
-  });
+    console.log(this.count);
+  }
 
 
-  {/*  if (imageIndex <0) ({imageIndex: this.getInitialState}),
-  else {
-    console.log(imageIndex);
+  previous() {
+    this.count = 0;
+    this.setState({
+      imageIndex: (this.state.imageIndex -1 < 0) ? this.state.selection.length -1 : this.state.imageIndex -1
+    });
+  }
 
-  if (counter === 30) {counter: this.getInitialState} */}
+  next() {
+    this.count = 0;
+    this.setState({
+      imageIndex: (this.state.imageIndex +1 > this.state.selection.length -1) ? 0 : this.state.imageIndex +1
+    });
+  }
 
 
-var App = React.createClass({
 
-   render: function() {
+    render() {
+        return (
+
+          <div id="overlay" className="overlay" style={{"position" : "fixed", "width" : "100%", "height" : "100%", "top" : "0px", "left" : "0px","right" : "0px","bottom" : "0px", "backgroundColor" : "rgba(0,0,0,0.9)"}}>
+            <img src={this.state.selection[this.state.imageIndex]} className="img-responsive" style={{"height" : "92%", "width" : "387px", "position" : "relative", "align" : "center"}}/>
+              {/*<input id="switchEvery" type="text" defaultValue={this.switchEvery} onBlur={this.changeSwitch.bind(this)}/>*/}
+              <div className="btn-group">
+                 <button type="button" className="btn btn-default btn-lg button3" onClick={this.previous.bind(this)}>Previous</button>
+                 <button type="button" className="btn btn-default btn-lg button3" onClick={this.props.close}>STOP</button>
+                 <button type="button" className="btn btn-default btn-lg button3" onClick={this.next.bind(this)}>Next</button>
+              </div>
+          </div>
+        );
+      }
+}
+
+
+class App extends React.Component{
+
+   render() {
       return (
         <div className="container">
           <div className="row">
             <div className="col-sm-12">
-            <NavButton />
-            <Header/>
-            <Content/>
-            <Expressions />
-            <Gender />
-            <ButtonClicked />
+              <NavButton />
+              <Header/>
+              <Content/>
+              <Expressions />
+              <Gender />
+              <ButtonClicked />
+            </div>
+          </div>
          </div>
-         </div>
-         </div>
-      );
+       );
+    }
 }
-})
 export default App;

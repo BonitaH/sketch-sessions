@@ -1,0 +1,43 @@
+!<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<script>
+var array = [
+  {
+    name: 'number1',
+    mood: 'happy',
+  },
+  {
+    name: 'number2',
+    mood: 'sad',
+  },
+  {
+    mood: 'happy',
+    name: 'number1',
+  },
+  {
+    mood: 'angry',
+    name: 'number2',
+  },
+  {
+    name: 'number1',
+    mood: 'happy',
+  }
+]
+console.log(array);
+
+var happy = array.filter(function(image){
+  return image.mood === 'happy';
+})
+console.log(happy);
+
+var names = happy.map(function(image){
+  return image.name ;
+})
+console.log(names);
+
+</script>
+</body>
+</html>
