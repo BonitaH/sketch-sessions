@@ -14,6 +14,10 @@
   color: white;
 }
 
+body {
+  margin-bottom: 30px;
+}
+
 .App-intro {
   font-size: large;
 }
@@ -37,7 +41,7 @@
 
 .Content {
   padding-top: 0px;
-  padding-bottom: 0px;
+  padding-bottom: 10px;
   font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
   font-size: 28px;
   font-style: normal;
@@ -47,8 +51,8 @@
 }
 
 .Radio {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 0px;
+  padding-bottom: 35px;
   font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 	font-size: 16px;
 	font-style: normal;
@@ -68,12 +72,20 @@
   line-height: 26.4px;
 }
 
+.saveButton {
+  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+}
+
 .button1 {
   font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-variant: normal;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .button2 {
@@ -91,5 +103,9 @@
   font-variant: normal;
   font-weight: 400;
   word-wrap: break-word;
-  width:130px;
+  width:125px;
 }
+
+ .finalButton {
+  padding-bottom: 25px;
+ }
